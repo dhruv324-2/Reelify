@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InstaTune - Step 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Step 2: Connect Your Spotify</h1>
+    <p>Now we need permission to create playlists in your Spotify account.</p>
+    
+    <a href="{{ url_for('generate') }}">
+        <button>Connect with Spotify</button>
+    </a>
+</body>
+</html>

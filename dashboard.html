@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaTune - Dashboard</title>
+    <!-- Add cache-busting to ensure new styles load -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=FINAL">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="dashboard-page">
+
+    <div class="dashboard-container">
+        <h1>Welcome, {{ user.username }}!</h1>
+
+        {% if instagram_connected %}
+            <!-- State 2: Instagram is connected. Show the new creative form. -->
+            <form action="{{ url_for('save_playlist_details') }}" method="POST" class="playlist-form">
+                <h3>Customize Your Playlist</h3>
+                <div class="form-group creative-input">
+                    <input type="text" name="playlist_name" id="playlist_name" placeholder=" " required>
+                    <label for="playlist_name">Playlist Name</label>
+                </div>
+                <div class="form-group creative-input">
+                    <textarea name="playlist_description" id="playlist_description" placeholder=" " rows="2"></textarea>
+                    <label for="playlist_description">Description (Optional)</label>
+                </div>
+                <button type="submit" class="dashboard-btn submit-btn">
+                    <i class="fab fa-spotify"></i>
+                    Create My Playlist
+                </button>
+            </form>
+
+        {% else %}
+            <!-- State 1: Instagram is NOT connected -->
+            <p>First, please connect your Instagram account.</p>
+            <a href="{{ url_for('show_instagram_connect_page') }}" class="dashboard-btn">
+                <i class="fab fa-instagram"></i>
+                Connect Instagram
+            </a>
+        {% endif %}
+
+        <a href="{{ url_for('logout') }}" class="logout-link">Log Out</a>
+    </div>
+
+</body>
+</html>
+

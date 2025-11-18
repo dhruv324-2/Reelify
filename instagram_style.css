@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* UPDATED: Added dynamic gradient background */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #f09433, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* This container creates the animated gradient border effect */
+.login-box-wrapper {
+    position: relative;
+    width: 380px;
+    height: 440px;
+    padding: 5px;
+    background: linear-gradient(45deg, #ff2770, #45f3ff);
+    border-radius: 15px; /* Softer corners */
+    animation: glow 1.5s linear infinite alternate;
+}
+
+/* Replaced blur with a cleaner box-shadow glow */
+@keyframes glow {
+    from { 
+        box-shadow: 0 0 5px #ff2770, 0 0 5px #45f3ff;
+    }
+    to { 
+        box-shadow: 0 0 20px #ff2770, 0 0 20px #45f3ff;
+    }
+}
+
+/* UPDATED: Enhanced "frosted glass" box */
+.login-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Enhanced Glassmorphism Effect */
+    background: rgba(40, 40, 40, 0.55);   /* Lighter, more transparent background */
+    backdrop-filter: blur(20px);          /* More intense blur for a premium feel */
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Brighter border to define the edge */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Deeper shadow for more depth */
+    border-radius: 10px; /* Match wrapper's corners */
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: #fff;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #ccc; /* Lighter text for better readability on glass */
+    font-size: 0.9em;
+    margin-bottom: 25px;
+}
+
+.input-box {
+    position: relative;
+    width: 300px;
+    margin-bottom: 35px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1em;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #555;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #ccc;
+    pointer-events: none;
+    transition: .3s ease all;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -5px;
+    color: #45f3ff;
+    font-size: 0.8em;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ff2770, #45f3ff);
+    color: #1c1c1c;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(69, 243, 255, 0.5), 0 0 15px rgba(255, 39, 112, 0.5);
+}
+

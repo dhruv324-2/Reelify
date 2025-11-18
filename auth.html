@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InstaTune - Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- Sign Up (Register) Form -->
+        <div class="form-container sign-up-container">
+            <form action="{{ url_for('signup') }}" method="POST">
+                <h1>Register</h1>
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Username" required />
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Email" required />
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Password" required />
+                    <i class="fas fa-lock"></i>
+                </div>
+                <button type="submit">Register</button>
+                <div class="form-switch">
+                    <span>Already have an account? <a href="#" id="signInLink">Sign In</a></span>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sign In (Login) Form -->
+        <div class="form-container sign-in-container">
+            <form action="{{ url_for('login') }}" method="POST">
+                <h1>Login</h1>
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Username" required />
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Password" required />
+                    <i class="fas fa-lock"></i>
+                </div>
+                <button type="submit">Login</button>
+                 <div class="form-switch">
+                    <span>Don't have an account? <a href="#" id="signUpLink">Sign Up</a></span>
+                </div>
+            </form>
+        </div>
+
+        <!-- Animated Overlay -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <!-- Register Panel -->
+                <div class="overlay-panel overlay-left">
+                    <h1>WELCOME!</h1>
+                    <p>We're delighted to have you here. If you need any assistance, feel free to reach out.</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <!-- Login Panel -->
+                <div class="overlay-panel overlay-right">
+                    <h1>WELCOME BACK!</h1>
+                    <p>We are happy to have you with us again. If you need anything, we are here to help.</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const signUpLink = document.getElementById('signUpLink');
+        const signInLink = document.getElementById('signInLink');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+        
+        signUpLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+
+        signInLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            container.classList.remove("right-panel-active");
+        });
+    </script>
+</body>
+</html>
+
